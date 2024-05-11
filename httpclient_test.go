@@ -58,7 +58,10 @@ func testServe() {
 
 	address := ":8000"
 	log.Info("listen and serve %s", address)
-	http.ListenAndServe(address, nil)
+	err := http.ListenAndServe(address, nil)
+	if err != nil {
+		log.Error("listen and server %s err, err=%s", address, err)
+	}
 }
 
 func TestHttpClient(t *testing.T) {
